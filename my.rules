@@ -1,0 +1,16 @@
+#Todas las reglas estan comentadas para ser testeadas una por una
+
+#alert icmp any any -> any any (msg: “ICMP Packet found”; sid:2000001; rev:1)
+
+#alert tcp any any -> any any (msg:"YOUTUBE"; content:"youtube"; sid:2000003; rev:1)
+
+#alert http $HOME_NET any -> $EXTERNAL_NET 80 (msg:”se realizó una petición GET”; flow: established; to_server; content:”GET”; http_method; sid: 2000004; rev: 1;)
+
+#alert tcp any any -> any 22 (msg: “DETECCION SSH”; flow: to-server; app-layer-protocol: ssh; sid: 2000005; rev:1;)
+
+#drop icmp any any -> any any (msg: “Ping bloqueado”; sid: 2000006; rev:1)
+
+#drop tcp any any -> 192.168.1.24 5000 (msg:"Bloqueo HTTP MW"; sid:2000007; rev:1; classtype:attempted-recon; flow:to_server,established; content:"POST "; http_method; content:"/api/datos"; http_uri; nocase; priority:1;)
+
+#drop tcp any any -> any any (msg “MW bloqueado”; content:”drive”; sid: 200008; rev:1;)
+
