@@ -113,7 +113,7 @@ class ReglaSuricata(QWidget):
                         stderr=subprocess.DEVNULL
                     )
                 except Exception:
-                    pass  # Ignoramos cualquier error al reiniciar
+                    pass 
 
             self.close()
             QApplication.quit()
